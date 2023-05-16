@@ -9,8 +9,8 @@ gcloud auth application-default login
 ```
 4. Setup a vulnerable to SSRF Cloud Function with help of Terrafrom scripts. 
 ```bash
-git clone
-cd gcp_poc/terraform
+git clone https://github.com/Horlad/signBlob_PrivEsc_PoC.git
+cd signBlob_PrivEsc_PoC/terraform
 terrafrom init -upgrade
 terrafrom apply --var gcp_project_id=YOUR_GCP_PROJECT_ID
 ```
