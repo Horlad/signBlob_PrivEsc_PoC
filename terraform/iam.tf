@@ -2,13 +2,11 @@ locals {
   account_id = "signurl-account"
   role_id    = "signurl_role"
   apis_list = [
-    "cloudresourcemanager.googleapis.com",
     "cloudbuild.googleapis.com",
     "cloudfunctions.googleapis.com",
     "run.googleapis.com",
     "artifactregistry.googleapis.com",
-    "compute.googleapis.com",
-
+    "compute.googleapis.com"
   ]
 }
 
