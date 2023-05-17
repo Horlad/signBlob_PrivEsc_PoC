@@ -14,6 +14,10 @@ locals {
 resource "google_service_account" "signurl_account" {
   account_id   = "${local.account_id}-${random_id.random_prefix.dec}"
   display_name = "Service Account for Cloud Function to sign URLs"
+
+  depends_on = [
+    google_project_service.gcp_services
+  ]
 }
 
 resource "google_project_iam_custom_role" "bucket_role" {
@@ -29,6 +33,10 @@ resource "google_project_iam_custom_role" "bucket_role" {
     "storage.objects.get"
   ]
 
+  depends_on = [
+    google_project_service.gcp_services
+  ]
+
   stage = "GA"
 }
 
@@ -38,6 +46,10 @@ resource "google_project_iam_binding" "service_account_binding" {
 
   members = [
     "serviceAccount:${google_service_account.signurl_account.email}",
+  ]
+  
+  depends_on = [
+    google_project_service.gcp_services
   ]
 }
 
