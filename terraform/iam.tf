@@ -47,10 +47,14 @@ resource "google_project_service" "gcp_services" {
 }
 
 data "google_app_engine_default_service_account" "default" {
-
+  depends_on = [
+    google_cloudfunctions2_function.function
+  ]
 }
 
 data "google_compute_default_service_account" "default" {
-
+  depends_on = [
+    google_cloudfunctions2_function.function
+  ]
 }
 
