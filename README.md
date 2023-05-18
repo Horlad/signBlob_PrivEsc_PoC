@@ -9,7 +9,7 @@
 git clone https://github.com/Horlad/signBlob_PrivEsc_PoC.git
 cd signBlob_PrivEsc_PoC/terraform
 terraform init -upgrade
-terraform apply --var gcp_project_id=YOUR_GCP_PROJECT_ID
+terraform apply
 ```
 
 ## Exploitation
