@@ -31,7 +31,7 @@ data "archive_file" "source_code_zip" {
 }
 
 resource "google_storage_bucket" "bucket" {
-  name     = "${local.bucket_name}_${var.gcp_project_id}_${random_id.random_prefix.dec}"
+  name     = "${local.bucket_name}_${var.gcp_project_id}"
   location = "US"
 }
 

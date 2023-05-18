@@ -5,14 +5,14 @@ from datetime import timedelta
 from google import auth
 from google.cloud.storage import Client
 
-bucket_name = "signurl_testing"
-exp = timedelta(hours=6)
-
 credentials, project_id = auth.default()
 if credentials.token is None:
 		credentials.refresh(auth.transport.requests.Request())
 
 client = Client()
+
+bucket_name = f"signurl_testing_{project_id}"
+exp = timedelta(hours=6)
 
 def parse_header(string):
     res = string.partition(":")
