@@ -42,12 +42,11 @@ resource "google_project_iam_custom_role" "bucket_role" {
 
 resource "google_project_iam_binding" "service_account_binding" {
   role    = google_project_iam_custom_role.bucket_role.id
-  project = var.gcp_project_id
 
   members = [
     "serviceAccount:${google_service_account.signurl_account.email}",
   ]
-  
+
   depends_on = [
     google_project_service.gcp_services
   ]
@@ -55,7 +54,6 @@ resource "google_project_iam_binding" "service_account_binding" {
 
 resource "google_project_service" "gcp_services" {
   for_each = toset(local.apis_list)
-  project  = var.gcp_project_id
   service  = each.key
 }
 

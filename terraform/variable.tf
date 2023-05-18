@@ -4,8 +4,3 @@ variable "gcp_region" {
   type        = string
 
 }
-
-variable "gcp_project_id" {
-  description = "A UUID for environment-related resources"
-  type        = string
-}

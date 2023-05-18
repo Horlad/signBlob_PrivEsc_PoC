@@ -16,8 +16,11 @@ locals {
 }
 
 provider "google" {
-  project = var.gcp_project_id
   region  = var.gcp_region
+}
+
+data "google_project" "project" {
+
 }
 
 resource "random_id" "random_prefix" {
@@ -31,7 +34,7 @@ data "archive_file" "source_code_zip" {
 }
 
 resource "google_storage_bucket" "bucket" {
-  name     = "${local.bucket_name}_${var.gcp_project_id}"
+  name     = "${local.bucket_name}_${google_project.project.project_id}"
   location = "US"
 }
 
