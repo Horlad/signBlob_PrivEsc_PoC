@@ -11,7 +11,7 @@ if credentials.token is None:
 
 client = Client()
 
-bucket_name = f"signurl_testing_{project_id}"
+bucket_name = f"signurl_testing_{project_idd}"
 exp = timedelta(hours=6)
 
 def parse_header(string):
