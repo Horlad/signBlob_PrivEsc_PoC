@@ -16,4 +16,4 @@ terraform apply --var gcp_project_id=YOUR_GCP_PROJECT_ID
 ```
 curl https://YOUR.CLOUD.FUNCTION.DOMAIN/?url=http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/token&auth=Metadata-Flavor:%20Google
 ```
-2. The Terraform output you can also find `App Engine` and `Compute Engine ` default service accounts which were created automatically during the Cloud Function creation without explicit instructions. You can use them to escalate to `Editor` role via [the Rhinosecurity exploit](https://github.com/RhinoSecurityLabs/GCP-IAM-Privilege-Escalation/blob/master/ExploitScripts/iam.serviceAccounts.signBlob-accessToken.py).
+2. The Terraform output you can also find `App Engine` and `Compute Engine` default service accounts which were created automatically during the Cloud Function creation without explicit instructions. You can use them to escalate to `Editor` role via [the Rhinosecurity exploit](https://github.com/RhinoSecurityLabs/GCP-IAM-Privilege-Escalation/blob/master/ExploitScripts/iam.serviceAccounts.signBlob-accessToken.py).
