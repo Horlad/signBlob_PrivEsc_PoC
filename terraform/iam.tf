@@ -42,11 +42,12 @@ resource "google_project_iam_custom_role" "bucket_role" {
 
 resource "google_project_iam_binding" "service_account_binding" {
   role    = google_project_iam_custom_role.bucket_role.id
+  project = data.google_project.project.project_id
 
   members = [
     "serviceAccount:${google_service_account.signurl_account.email}",
   ]
-
+  
   depends_on = [
     google_project_service.gcp_services
   ]
