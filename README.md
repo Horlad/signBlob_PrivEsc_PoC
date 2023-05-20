@@ -2,7 +2,7 @@
 
 ## Setup
 1. Create [a new project](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project) in Google Cloud environment and choose it as current working one.
-2. Enable [Cloud Resourse Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com) for your project.
+2. Enable [Cloud Resourse Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com) and [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com) for your project.
 3. Open Cloud Shell and ensure that the current project is the new created one.
 4. Download Terraform script and setup a vulnerable to SSRF Cloud Function:
 ```bash
